@@ -2,8 +2,12 @@ import axios from "axios";
 
 const getAll = async () => {
   const request = await axios.get("/memes");
-  console.log(request);
   return request.data;
 };
 
-export default { getAll };
+const getSingle = async (id) => {
+  const request = await axios.get(`/memes/${id}`);
+  return request.data;
+};
+
+export default { getAll, getSingle };

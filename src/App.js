@@ -1,22 +1,19 @@
-import "./App.css";
-import memeService from "./services/memes";
 import React, { useState, useEffect } from "react";
-import Meme from "./components/Meme";
-import Layout from "./layout/Layout";
 import MainPage from "./pages/MainPage";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import SingleMemePage from "./pages/SingleMemePage";
 
 function App() {
-  const [allMemes, setAllMemes] = useState([]);
-
-  useEffect(() => {
-    async function fetchMemes() {
-      const memes = await memeService.getAll();
-      setAllMemes(memes);
-    }
-    fetchMemes();
-  }, []);
-
-  return <MainPage />;
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <MainPage />
+        </Route>
+        <Route exact path="/:id" component={SingleMemePage} />
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;
