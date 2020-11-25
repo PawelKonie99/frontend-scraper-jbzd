@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import AllMemes from "../components/AllMemes/AllMemes";
+import Layout from "../layout/Layout";
 
 const MainPage = () => {
-  return <AllMemes />;
+  return (
+    <Layout>
+      <AllMemes />
+    </Layout>
+  );
 };
 
 export default MainPage;

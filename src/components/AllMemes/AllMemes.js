@@ -1,7 +1,15 @@
 import memeService from "../../services/memes";
 import React, { useState, useEffect } from "react";
 import Meme from "../Meme/Meme";
-import Layout from "../../layout/Layout";
+import styled from "styled-components";
+
+const MemesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: ${({ theme }) => theme.colors.offWhite};
+`;
 
 const AllMemes = () => {
   const [allMemes, setAllMemes] = useState([]);
@@ -14,18 +22,16 @@ const AllMemes = () => {
     fetchMemes();
   }, []);
   return (
-    <Layout>
-      <div className="App">
-        {allMemes.slice(0, 3).map((meme) => (
-          <Meme
-            key={meme.id}
-            title={meme.title}
-            url={meme.photoUrl}
-            id={meme.id}
-          />
-        ))}
-      </div>
-    </Layout>
+    <MemesContainer>
+      {allMemes.slice(0, 3).map((meme) => (
+        <Meme
+          key={meme.id}
+          title={meme.title}
+          url={meme.photoUrl}
+          id={meme.id}
+        />
+      ))}
+    </MemesContainer>
   );
 };
 

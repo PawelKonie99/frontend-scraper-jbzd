@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MainPage from "./pages/MainPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SingleMemePage from "./pages/SingleMemePage";

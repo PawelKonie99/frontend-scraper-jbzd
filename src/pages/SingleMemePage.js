@@ -15,7 +15,6 @@ const SingleMemePage = ({ match }) => {
     getSingleMeme();
   }, []);
 
-  console.log(singleMeme.photoUrl);
   return <Meme title={singleMeme.title} url={singleMeme.photoUrl} />;
 };
 
