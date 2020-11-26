@@ -5,10 +5,11 @@ import singleMemePage from "../../pages/SingleMemePage";
 
 export const MemeContainer = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.black};
-  width: 60%;
-  margin-bottom: 10rem;
+  max-width: 60%;
+  margin-bottom: ${(props) => props.margin || "10rem"};
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -18,24 +19,26 @@ export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-export const Photo = styled.img`
-  width: 80%;
+export const Image = styled.img`
+  width: 100%;
   margin-bottom: 2rem;
 `;
 
-const pickSingleMeme = (history, title, url, id) => {
-  console.log(title, url, id);
+const pickSingleMeme = (history, id) => {
   <Link to={`/${id}`}></Link>;
   history.push(`/${id}`);
 };
 
-const Meme = ({ title, url, id }) => {
+const Meme = ({ margin, title, url, id }) => {
   return (
     <Route
       render={({ history }) => (
-        <MemeContainer onClick={() => pickSingleMeme(history, title, url, id)}>
+        <MemeContainer
+          margin={margin}
+          onClick={() => pickSingleMeme(history, id)}
+        >
           <Title>{title}</Title>
-          <Photo src={url} alt={title} />
+          <Image src={url} alt={title} />
         </MemeContainer>
       )}
     />

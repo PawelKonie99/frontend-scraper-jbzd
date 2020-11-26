@@ -1,7 +1,8 @@
 export const colors = {
   white: "#fff",
   black: "#000",
-  offWhite: "#3a3a3a",
+  offWhite: "#f1eeee",
+  background: "#30313a",
 };
 
 export default colors;

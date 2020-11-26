@@ -8,7 +8,7 @@ const MemesContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${({ theme }) => theme.colors.offWhite};
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 const AllMemes = () => {
@@ -17,10 +17,11 @@ const AllMemes = () => {
   useEffect(() => {
     async function fetchMemes() {
       const memes = await memeService.getAll();
-      setAllMemes(memes);
+      setAllMemes(memes.reverse());
     }
     fetchMemes();
   }, []);
+
   return (
     <MemesContainer>
       {allMemes.slice(0, 3).map((meme) => (
