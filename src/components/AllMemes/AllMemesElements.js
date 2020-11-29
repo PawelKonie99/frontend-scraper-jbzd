@@ -16,4 +16,13 @@ export const ButtonsContainer = styled.div`
   margin-bottom: 10rem;
 `;
 
-export const directionButton = styled.button``;
+export const DirectionButton = styled.button`
+  padding: 1rem 4rem;
+  margin: 0 2rem;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.darkerBackground};
+  background: ${({ theme }) => theme.colors.elements};
+`;

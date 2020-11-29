@@ -2,7 +2,11 @@ import memeService from "../../services/memes";
 import React, { useState, useEffect } from "react";
 import Meme from "../Meme/Meme";
 import { Link, Route } from "react-router-dom";
-import { MemesContainer, ButtonsContainer } from "./AllMemesElements";
+import {
+  MemesContainer,
+  ButtonsContainer,
+  DirectionButton,
+} from "./AllMemesElements";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const AllMemes = ({ pageRefresh }) => {
@@ -64,8 +68,12 @@ const AllMemes = ({ pageRefresh }) => {
           <Route
             render={({ history }) => (
               <ButtonsContainer>
-                <div onClick={() => previousPage(history)}> Previous Page </div>
-                <div onClick={() => nextPage(history)}> Next Page </div>
+                <DirectionButton onClick={() => previousPage(history)}>
+                  Poprzednia strona
+                </DirectionButton>
+                <DirectionButton onClick={() => nextPage(history)}>
+                  Następna strona
+                </DirectionButton>
               </ButtonsContainer>
             )}
           />

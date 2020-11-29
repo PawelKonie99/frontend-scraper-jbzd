@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
-import { MemeContainer, Title, Image } from "./MemeElements";
+import { MemeContainer, Title, Image, TitleContainer } from "./MemeElements";
 
 const pickSingleMeme = (history, id) => {
   <Link to={`/${id}`}></Link>;
@@ -15,7 +15,9 @@ const Meme = ({ margin, title, url, id }) => {
           margin={margin}
           onClick={() => pickSingleMeme(history, id)}
         >
-          <Title>{title}</Title>
+          <TitleContainer>
+            <Title>{title}</Title>
+          </TitleContainer>
           <Image src={url} alt={title} />
         </MemeContainer>
       )}

@@ -9,10 +9,10 @@ const GlobalStyles = createGlobalStyle`
     *{
       @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
       @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto");
-      margin: 0;
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');      margin: 0;
       padding: 0;
       box-sizing: border-box; 
-      font-family: 'Rubik';
+      font-family: 'Noto Sans JP', sans-serif;
     }
 `;
 
