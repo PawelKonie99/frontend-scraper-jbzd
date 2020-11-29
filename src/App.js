@@ -10,6 +10,7 @@ function App() {
         <Route exact path="/">
           <MainPage />
         </Route>
+        <Route exact path="/page/:page" component={MainPage} />
         <Route exact path="/:id" component={SingleMemePage} />
       </Switch>
     </Router>

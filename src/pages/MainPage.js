@@ -2,10 +2,10 @@ import React from "react";
 import AllMemes from "../components/AllMemes/AllMemes";
 import Layout from "../layout/Layout";
 
-const MainPage = () => {
+const MainPage = ({ match }) => {
   return (
     <Layout>
-      <AllMemes />
+      <AllMemes pageRefresh={match ? match?.params.page : 1} />
     </Layout>
   );
 };

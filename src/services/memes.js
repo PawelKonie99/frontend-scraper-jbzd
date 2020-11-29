@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const getAll = async () => {
-  const request = await axios.get("/memes");
+const getAll = async (page) => {
+  const request = await axios.get(`/memes?page=${page}&limit=5`);
   return request.data;
 };
 

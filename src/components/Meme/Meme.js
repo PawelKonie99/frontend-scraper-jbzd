@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Link, Route } from "react-router-dom";
-import singleMemePage from "../../pages/SingleMemePage";
 
 export const MemeContainer = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.black};
