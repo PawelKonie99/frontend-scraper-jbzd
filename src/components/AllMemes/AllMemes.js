@@ -1,21 +1,14 @@
 import memeService from "../../services/memes";
 import React, { useState, useEffect } from "react";
 import Meme from "../Meme/Meme";
-import styled from "styled-components";
 import { Link, Route } from "react-router-dom";
-
-const MemesContainer = styled.div`
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: ${({ theme }) => theme.colors.background};
-`;
+import { MemesContainer, ButtonsContainer } from "./AllMemesElements";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const AllMemes = ({ pageRefresh }) => {
   const [allMemes, setAllMemes] = useState([]);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const fetchUrlAfterRefresh = () => {
     if (pageRefresh) {
@@ -24,11 +17,13 @@ const AllMemes = ({ pageRefresh }) => {
     return;
   };
 
+  async function fetchMemes() {
+    const memes = await memeService.getAll(page);
+    setAllMemes(memes.results.reverse());
+    setLoading(false);
+  }
+
   useEffect(() => {
-    async function fetchMemes() {
-      const memes = await memeService.getAll(page);
-      setAllMemes(memes.results.reverse());
-    }
     fetchUrlAfterRefresh();
     fetchMemes();
     window.scrollTo(0, 0);
@@ -52,24 +47,30 @@ const AllMemes = ({ pageRefresh }) => {
 
   return (
     <>
-      <MemesContainer>
-        {allMemes.slice(0, 3).map((meme) => (
-          <Meme
-            key={meme.id}
-            title={meme.title}
-            url={meme.photoUrl}
-            id={meme.id}
+      {loading ? (
+        <MemesContainer>
+          <CircularProgress color="black" />
+        </MemesContainer>
+      ) : (
+        <MemesContainer>
+          {allMemes.slice(0, 3).map((meme) => (
+            <Meme
+              key={meme.id}
+              title={meme.title}
+              url={meme.photoUrl}
+              id={meme.id}
+            />
+          ))}
+          <Route
+            render={({ history }) => (
+              <ButtonsContainer>
+                <div onClick={() => previousPage(history)}> Previous Page </div>
+                <div onClick={() => nextPage(history)}> Next Page </div>
+              </ButtonsContainer>
+            )}
           />
-        ))}
-        <Route
-          render={({ history }) => (
-            <div>
-              <div onClick={() => previousPage(history)}> Previous Page </div>
-              <div onClick={() => nextPage(history)}> Next Page </div>
-            </div>
-          )}
-        />
-      </MemesContainer>
+        </MemesContainer>
+      )}
     </>
   );
 };
