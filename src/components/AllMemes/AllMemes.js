@@ -25,7 +25,7 @@ const AllMemes = ({ pageRefresh }) => {
 
   const fetchMemes = async () => {
     const memes = await memeService.getAll(page, scraperName);
-    setAllMemes(memes.results.reverse());
+    setAllMemes(memes.results);
     setLoading(false);
   };
 
@@ -37,7 +37,7 @@ const AllMemes = ({ pageRefresh }) => {
   };
 
   useEffect(() => {
-    // fetchUrlAfterRefresh();
+    fetchUrlAfterRefresh();
     fetchMemes();
     window.scrollTo(0, 0);
   }, [page, scraperName]);
@@ -67,7 +67,7 @@ const AllMemes = ({ pageRefresh }) => {
       ) : (
         <MemesContainer>
           <WebsiteChoose changeScraperDisplay={changeScraperDisplay} />
-          {allMemes.slice(0, 3).map((meme) => (
+          {allMemes.map((meme) => (
             <Meme
               key={meme.id}
               title={meme.title}
