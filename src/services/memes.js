@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const getAll = async (page) => {
-  const request = await axios.get(`/memes?page=${page}&limit=5`);
+const getAll = async (page, scraperName) => {
+  const request = await axios.get(`/memes/${scraperName}?page=${page}&limit=5`);
   return request.data;
 };
 

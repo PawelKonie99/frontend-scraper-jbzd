@@ -8,10 +8,12 @@ import {
   DirectionButton,
 } from "./AllMemesElements";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import WebsiteChoose from "../WebsiteChoose/WebsiteChoose";
 
 const AllMemes = ({ pageRefresh }) => {
   const [allMemes, setAllMemes] = useState([]);
   const [page, setPage] = useState(1);
+  const [scraperName, setScraperName] = useState("jebzdzidy");
   const [loading, setLoading] = useState(true);
 
   const fetchUrlAfterRefresh = () => {
@@ -21,17 +23,24 @@ const AllMemes = ({ pageRefresh }) => {
     return;
   };
 
-  async function fetchMemes() {
-    const memes = await memeService.getAll(page);
+  const fetchMemes = async () => {
+    const memes = await memeService.getAll(page, scraperName);
     setAllMemes(memes.results.reverse());
     setLoading(false);
-  }
+  };
+
+  const changeScraperDisplay = (scaperName, history) => {
+    setPage(1);
+    <Link to={"/page/1"}></Link>;
+    history.push(`/page/1`);
+    setScraperName(scaperName);
+  };
 
   useEffect(() => {
-    fetchUrlAfterRefresh();
+    // fetchUrlAfterRefresh();
     fetchMemes();
     window.scrollTo(0, 0);
-  }, [page, pageRefresh]);
+  }, [page, scraperName]);
 
   const nextPage = (history) => {
     setPage(page + 1);
@@ -57,6 +66,7 @@ const AllMemes = ({ pageRefresh }) => {
         </MemesContainer>
       ) : (
         <MemesContainer>
+          <WebsiteChoose changeScraperDisplay={changeScraperDisplay} />
           {allMemes.slice(0, 3).map((meme) => (
             <Meme
               key={meme.id}
