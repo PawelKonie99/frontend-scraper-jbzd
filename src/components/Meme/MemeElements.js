@@ -7,6 +7,7 @@ export const MemeContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const TitleContainer = styled.div`

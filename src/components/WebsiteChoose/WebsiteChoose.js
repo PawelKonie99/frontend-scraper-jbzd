@@ -26,7 +26,7 @@ export const WebsiteToChoose = styled.img`
 const WebsiteChoose = ({ changeScraperDisplay }) => {
   return (
     <>
-      <ChooseTitle>Wybierz strone</ChooseTitle>
+      <ChooseTitle>Wybierz strone z której chcesz zobaczyć memy</ChooseTitle>
       <WebsiteChooseContainer>
         <Route
           render={({ history }) => (
