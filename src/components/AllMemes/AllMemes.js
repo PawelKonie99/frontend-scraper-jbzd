@@ -33,6 +33,7 @@ const AllMemes = ({ pageRefresh }) => {
     setPage(1);
     <Link to={"/page/1"}></Link>;
     history.push(`/page/1`);
+    // console.log(("scaperName:", scaperName));
     setScraperName(scaperName);
   };
 

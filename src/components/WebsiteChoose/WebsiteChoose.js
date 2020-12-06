@@ -1,29 +1,33 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
 import jebzdzidyLogo from "../../utils/images/dzida.jpg";
 import kwejkLogo from "../../utils/images/kwejk.png";
-import { Link, Route } from "react-router-dom";
-
-export const WebsiteChooseContainer = styled.div`
-  display: flex;
-`;
-
-export const ChooseTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.white};
-  font-size: 1.5rem;
-  margin: 3rem 0 2rem 0;
-`;
-
-export const WebsiteToChoose = styled.img`
-  src: ${(props) => props.src};
-  cursor: pointer;
-  width: 150px;
-  height: 65px;
-  margin: 1rem 1rem 3rem 1rem;
-  border-radius: 3px;
-`;
+import { Route } from "react-router-dom";
+import {
+  WebsiteChooseContainer,
+  ChooseTitle,
+  WebsiteToChoose,
+} from "./WebsiteChooseElements";
+import { useDispatch } from "react-redux";
+import store from "../../store";
 
 const WebsiteChoose = ({ changeScraperDisplay }) => {
+  const dispatch = useDispatch();
+  console.log("scraperInStore:", store.getState().choosenWebsite.scraper);
+
+  const changeWebsite = (website) => {
+    dispatch({
+      type: "CHANGE_SCRAPER",
+      payload: {
+        scraper: website,
+      },
+    });
+  };
+
+  const handleClick = (scraperName, history) => {
+    changeWebsite(scraperName);
+    changeScraperDisplay(scraperName, history);
+  };
+
   return (
     <>
       <ChooseTitle>Wybierz strone z której chcesz zobaczyć memy</ChooseTitle>
@@ -33,11 +37,11 @@ const WebsiteChoose = ({ changeScraperDisplay }) => {
             <>
               <WebsiteToChoose
                 src={jebzdzidyLogo}
-                onClick={() => changeScraperDisplay("jebzdzidy", history)}
+                onClick={() => handleClick("jebzdzidy", history)}
               />
               <WebsiteToChoose
                 src={kwejkLogo}
-                onClick={() => changeScraperDisplay("kwejk", history)}
+                onClick={() => handleClick("kwejk", history)}
               />
             </>
           )}
