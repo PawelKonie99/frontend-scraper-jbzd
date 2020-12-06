@@ -1,13 +1,3 @@
-// import { createStore } from "redux";
-// import { composeWithDevTools } from "redux-devtools-extension";
-// import rootReducer from "./reducers/rootReducer";
-// import { persistStore, persistReducer } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
-
-// const store = createStore(rootReducer, composeWithDevTools());
-// export const persistor = persistStore(store);
-
-// export default store;
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { createStore } from "redux";

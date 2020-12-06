@@ -17,4 +17,7 @@ export const WebsiteToChoose = styled.img`
   height: 65px;
   margin: 1rem 1rem 3rem 1rem;
   border-radius: 3px;
+  /* border: 3px solid pink; */
+
+  border: ${(props) => (props.show === "active" ? "3px solid pink" : "")};
 `;

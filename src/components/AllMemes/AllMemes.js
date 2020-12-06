@@ -9,16 +9,19 @@ import {
 } from "./AllMemesElements";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import WebsiteChoose from "../WebsiteChoose/WebsiteChoose";
+import store from "../../store";
 
 const AllMemes = ({ pageRefresh }) => {
   const [allMemes, setAllMemes] = useState([]);
   const [page, setPage] = useState(1);
   const [scraperName, setScraperName] = useState("jebzdzidy");
   const [loading, setLoading] = useState(true);
+  const scraperInStore = store.getState().choosenWebsite.scraper;
 
   const fetchUrlAfterRefresh = () => {
     if (pageRefresh) {
       setPage(parseInt(pageRefresh));
+      setScraperName(scraperInStore);
     }
     return;
   };
@@ -33,7 +36,7 @@ const AllMemes = ({ pageRefresh }) => {
     setPage(1);
     <Link to={"/page/1"}></Link>;
     history.push(`/page/1`);
-    // console.log(("scaperName:", scaperName));
+    console.log(("scaperName:", scaperName));
     setScraperName(scaperName);
   };
 
@@ -63,7 +66,7 @@ const AllMemes = ({ pageRefresh }) => {
     <>
       {loading ? (
         <MemesContainer>
-          <CircularProgress color="black" />
+          <CircularProgress color="secondary" />
         </MemesContainer>
       ) : (
         <MemesContainer>

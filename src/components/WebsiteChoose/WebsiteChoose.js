@@ -12,7 +12,8 @@ import store from "../../store";
 
 const WebsiteChoose = ({ changeScraperDisplay }) => {
   const dispatch = useDispatch();
-  console.log("scraperInStore:", store.getState().choosenWebsite.scraper);
+  const scraperInStore = store.getState().choosenWebsite.scraper;
+  console.log(scraperInStore);
 
   const changeWebsite = (website) => {
     dispatch({
@@ -36,10 +37,12 @@ const WebsiteChoose = ({ changeScraperDisplay }) => {
           render={({ history }) => (
             <>
               <WebsiteToChoose
+                show={scraperInStore === "jebzdzidy" ? "active" : ""}
                 src={jebzdzidyLogo}
                 onClick={() => handleClick("jebzdzidy", history)}
               />
               <WebsiteToChoose
+                show={scraperInStore === "kwejk" ? "active" : ""}
                 src={kwejkLogo}
                 onClick={() => handleClick("kwejk", history)}
               />

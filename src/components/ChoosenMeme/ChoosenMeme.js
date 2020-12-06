@@ -23,7 +23,7 @@ const ChoosenMeme = ({ id }) => {
     <>
       {loading ? (
         <MemeContainer>
-          <CircularProgress color="black" />
+          <CircularProgress color="secondary" />
         </MemeContainer>
       ) : (
         <Layout>

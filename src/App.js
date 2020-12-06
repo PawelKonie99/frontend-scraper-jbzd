@@ -1,6 +1,6 @@
 import React from "react";
 import MainPage from "./pages/MainPage";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SingleMemePage from "./pages/SingleMemePage";
 import Layout from "./layout/Layout";
 
