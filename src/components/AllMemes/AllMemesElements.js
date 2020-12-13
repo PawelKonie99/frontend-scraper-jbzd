@@ -23,6 +23,6 @@ export const DirectionButton = styled.button`
   font-size: 1.3rem;
   border-radius: 5px;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.darkerBackground};
-  background: ${({ theme }) => theme.colors.elements};
+  color: ${({ theme }) => theme.colors.offWhite};
+  background: ${({ theme }) => theme.colors.darkerBackground};
 `;

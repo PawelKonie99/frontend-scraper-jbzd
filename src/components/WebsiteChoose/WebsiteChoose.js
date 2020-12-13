@@ -6,6 +6,7 @@ import {
   WebsiteChooseContainer,
   ChooseTitle,
   WebsiteToChoose,
+  ImageContainer,
 } from "./WebsiteChooseElements";
 import { useDispatch } from "react-redux";
 import store from "../../store";
@@ -36,16 +37,22 @@ const WebsiteChoose = ({ changeScraperDisplay }) => {
         <Route
           render={({ history }) => (
             <>
-              <WebsiteToChoose
+              <ImageContainer
                 show={scraperInStore === "jebzdzidy" ? "active" : ""}
-                src={jebzdzidyLogo}
-                onClick={() => handleClick("jebzdzidy", history)}
-              />
-              <WebsiteToChoose
-                show={scraperInStore === "kwejk" ? "active" : ""}
-                src={kwejkLogo}
-                onClick={() => handleClick("kwejk", history)}
-              />
+              >
+                <WebsiteToChoose
+                  show={scraperInStore === "jebzdzidy" ? "active" : ""}
+                  src={jebzdzidyLogo}
+                  onClick={() => handleClick("jebzdzidy", history)}
+                />
+              </ImageContainer>
+              <ImageContainer show={scraperInStore === "kwejk" ? "active" : ""}>
+                <WebsiteToChoose
+                  show={scraperInStore === "kwejk" ? "active" : ""}
+                  src={kwejkLogo}
+                  onClick={() => handleClick("kwejk", history)}
+                />
+              </ImageContainer>
             </>
           )}
         />
