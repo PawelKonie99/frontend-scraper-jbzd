@@ -12,12 +12,12 @@ export const ChooseTitle = styled.h1`
   margin: 4rem 0 2rem 0;
 `;
 
-export const ImageContainer = styled.div`
+export const ImageContainer = styled.div<{show:any}>`
   border-bottom: ${(props) =>
     props.show === "active" ? `3px solid #f1eeee` : ""};
 `;
 
-export const WebsiteToChoose = styled.img`
+export const WebsiteToChoose = styled.img<{show:any}>`
   src: ${(props) => props.src};
   cursor: pointer;
   width: 150px;

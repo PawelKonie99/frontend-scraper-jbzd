@@ -2,7 +2,7 @@ const initialState = {
   scraper: "jebzdzidy",
 };
 
-const choosenWebsiteReducer = (state = initialState, action) => {
+const choosenWebsiteReducer = (state = initialState, action: any) => {
   const { type, payload } = action;
 
   switch (type) {

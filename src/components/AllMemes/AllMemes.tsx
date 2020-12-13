@@ -1,6 +1,6 @@
 import memeService from "../../services/memes";
-import React, { useState, useEffect } from "react";
-import Meme from "../Meme/Meme";
+import React, { useState, useEffect, FC } from "react";
+import Meme from "../../components/Meme/Meme";
 import { Link, Route } from "react-router-dom";
 import {
   MemesContainer,
@@ -11,7 +11,14 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import WebsiteChoose from "../WebsiteChoose/WebsiteChoose";
 import store from "../../store";
 
-const AllMemes = ({ pageRefresh }) => {
+interface IAllMemes {
+  scaperName?: string;
+  pageRefresh: string;
+  changeScraperDisplay?: void;
+  page?: number;
+}
+
+const AllMemes:FC<IAllMemes> = ({ pageRefresh }) => {
   const [allMemes, setAllMemes] = useState([]);
   const [page, setPage] = useState(1);
   const [scraperName, setScraperName] = useState("jebzdzidy");
@@ -32,11 +39,11 @@ const AllMemes = ({ pageRefresh }) => {
     setLoading(false);
   };
 
-  const changeScraperDisplay = (scaperName, history) => {
+  const changeScraperDisplay = (scaperName: string, history: any) => {
+    console.log(typeof history)
     setPage(1);
     <Link to={"/page/1"}></Link>;
     history.push(`/page/1`);
-    console.log(("scaperName:", scaperName));
     setScraperName(scaperName);
   };
 
@@ -46,13 +53,13 @@ const AllMemes = ({ pageRefresh }) => {
     window.scrollTo(0, 0);
   }, [page, scraperName]);
 
-  const nextPage = (history) => {
+  const nextPage = (history: any) => {
     setPage(page + 1);
     <Link to={`/page/${page + 1}`}></Link>;
     history.push(`/page/${page + 1}`);
   };
 
-  const previousPage = (history) => {
+  const previousPage = (history: any) => {
     if (page > 1) {
       setPage(page - 1);
       <Link to={`/page/${page - 1}`}></Link>;
@@ -71,7 +78,7 @@ const AllMemes = ({ pageRefresh }) => {
       ) : (
         <MemesContainer>
           <WebsiteChoose changeScraperDisplay={changeScraperDisplay} />
-          {allMemes.map((meme) => (
+          {allMemes.map((meme: any) => (
             <Meme
               key={meme.id}
               title={meme.title}
@@ -80,7 +87,7 @@ const AllMemes = ({ pageRefresh }) => {
             />
           ))}
           <Route
-            render={({ history }) => (
+            render={({ history }: any) => (
               <ButtonsContainer>
                 <DirectionButton onClick={() => previousPage(history)}>
                   Poprzednia strona

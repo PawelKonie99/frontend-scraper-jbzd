@@ -22,7 +22,7 @@ body {
 }
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: any) => {
   return (
     <ThemeProvider theme={theme}>
       <>

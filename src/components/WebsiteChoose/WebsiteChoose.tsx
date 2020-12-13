@@ -11,12 +11,13 @@ import {
 import { useDispatch } from "react-redux";
 import store from "../../store";
 
-const WebsiteChoose = ({ changeScraperDisplay }) => {
+const WebsiteChoose = ({ changeScraperDisplay }: any) => {
+  console.log(typeof changeScraperDisplay)
   const dispatch = useDispatch();
   const scraperInStore = store.getState().choosenWebsite.scraper;
-  console.log(scraperInStore);
 
-  const changeWebsite = (website) => {
+  const changeWebsite = (website: any) => {
+    console.log(typeof website)
     dispatch({
       type: "CHANGE_SCRAPER",
       payload: {
@@ -25,7 +26,8 @@ const WebsiteChoose = ({ changeScraperDisplay }) => {
     });
   };
 
-  const handleClick = (scraperName, history) => {
+  const handleClick = (scraperName: string, history: any) => {
+    console.log(typeof history)
     changeWebsite(scraperName);
     changeScraperDisplay(scraperName, history);
   };
@@ -35,7 +37,7 @@ const WebsiteChoose = ({ changeScraperDisplay }) => {
       <ChooseTitle>Wybierz strone z której chcesz zobaczyć memy</ChooseTitle>
       <WebsiteChooseContainer>
         <Route
-          render={({ history }) => (
+          render={({ history }: any) => (
             <>
               <ImageContainer
                 show={scraperInStore === "jebzdzidy" ? "active" : ""}

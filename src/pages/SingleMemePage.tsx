@@ -16,7 +16,8 @@ const MemeContainer = styled.div`
   background: ${({ theme }) => theme.colors.background};
 `;
 
-const SingleMemePage = ({ match }) => {
+const SingleMemePage = ({ match }: any) => {
+  // console.log(typeof match)
   return (
     <Layout>
       <ChoosenMeme id={match?.params.id} />

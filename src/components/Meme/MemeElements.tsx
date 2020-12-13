@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MemeContainer = styled.div`
+export const MemeContainer = styled.div<{margin: string | undefined }>`
   max-width: 60%;
   margin-bottom: ${(props) => props.margin || "10rem"};
   display: flex;

@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import Meme from "../../components/Meme/Meme";
 import Layout from "../../layout/Layout";
 import memeService from "../../services/memes";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { MemeContainer } from "./ChoosenMemeElements";
+import { stringify } from "querystring";
 
-const ChoosenMeme = ({ id }) => {
-  const [singleMeme, setSingleMeme] = useState({});
-  const [loading, setLoading] = useState(true);
-  //   const id = match.params.id;
+interface IChoosenMeme {
+  title?: string;
+  photoUrl?: string;
+  id: string;
+}
+
+const ChoosenMeme:FC<IChoosenMeme> = ({ id }) => {
+  const [singleMeme, setSingleMeme] = useState<any | {}>({});
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function getSingleMeme() {

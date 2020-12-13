@@ -2,7 +2,7 @@ import React from "react";
 import AllMemes from "../components/AllMemes/AllMemes";
 import Layout from "../layout/Layout";
 
-const MainPage = ({ match }) => {
+const MainPage = ({ match }: any) => {
   return (
     <Layout>
       <AllMemes pageRefresh={match ? match?.params.page : 1} />
