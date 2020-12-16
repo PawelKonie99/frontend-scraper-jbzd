@@ -4,10 +4,10 @@ import { MemeContainer, Title, Image, TitleContainer } from "./MemeElements";
 
 interface IMeme {
   key?: string;
-  title: string;
-  url: string;
+  title?: string;
+  url?: string;
   id?: string;
-  margin?: string | undefined;
+  margin?: string;
 }
 
 

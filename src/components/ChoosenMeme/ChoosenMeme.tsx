@@ -13,7 +13,7 @@ interface IChoosenMeme {
 }
 
 const ChoosenMeme:FC<IChoosenMeme> = ({ id }) => {
-  const [singleMeme, setSingleMeme] = useState<any | {}>({});
+  const [singleMeme, setSingleMeme] = useState<IChoosenMeme>({} as IChoosenMeme);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {

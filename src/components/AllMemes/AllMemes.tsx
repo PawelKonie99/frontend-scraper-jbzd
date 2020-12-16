@@ -1,7 +1,7 @@
 import memeService from "../../services/memes";
 import React, { useState, useEffect, FC } from "react";
 import Meme from "../../components/Meme/Meme";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, RouteComponentProps } from "react-router-dom";
 import {
   MemesContainer,
   ButtonsContainer,
@@ -10,20 +10,28 @@ import {
 import CircularProgress from "@material-ui/core/CircularProgress";
 import WebsiteChoose from "../WebsiteChoose/WebsiteChoose";
 import store from "../../store";
+import { StaticContext } from "react-router";
+
 
 interface IAllMemes {
-  scaperName?: string;
-  pageRefresh: string;
-  changeScraperDisplay?: void;
-  page?: number;
+  pageRefresh: any;
+  changeScraperDisplay?:  {
+    (scraperName: string,history: string[],pageRefresh: string) : void
+};
+}
+
+interface IMeme {
+  map(arg0: (meme: any) => JSX.Element): React.ReactNode;
+  id:string, title:string, photoUrl:string,
 }
 
 const AllMemes:FC<IAllMemes> = ({ pageRefresh }) => {
-  const [allMemes, setAllMemes] = useState([]);
-  const [page, setPage] = useState(1);
-  const [scraperName, setScraperName] = useState("jebzdzidy");
-  const [loading, setLoading] = useState(true);
-  const scraperInStore = store.getState().choosenWebsite.scraper;
+  const [allMemes, setAllMemes] = useState<IMeme>({} as IMeme);
+  const [page, setPage] = useState<number>(1);
+  const [scraperName, setScraperName] = useState<string>("jebzdzidy");
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const scraperInStore: string = store.getState().choosenWebsite.scraper;
 
   const fetchUrlAfterRefresh = () => {
     if (pageRefresh) {
@@ -39,8 +47,7 @@ const AllMemes:FC<IAllMemes> = ({ pageRefresh }) => {
     setLoading(false);
   };
 
-  const changeScraperDisplay = (scaperName: string, history: any) => {
-    console.log(typeof history)
+  const changeScraperDisplay = (scaperName: string, history: string[]) => {
     setPage(1);
     <Link to={"/page/1"}></Link>;
     history.push(`/page/1`);
@@ -53,13 +60,13 @@ const AllMemes:FC<IAllMemes> = ({ pageRefresh }) => {
     window.scrollTo(0, 0);
   }, [page, scraperName]);
 
-  const nextPage = (history: any) => {
+  const nextPage = (history: string[]) => {
     setPage(page + 1);
     <Link to={`/page/${page + 1}`}></Link>;
     history.push(`/page/${page + 1}`);
   };
 
-  const previousPage = (history: any) => {
+  const previousPage = (history: string[]) => {
     if (page > 1) {
       setPage(page - 1);
       <Link to={`/page/${page - 1}`}></Link>;
@@ -78,7 +85,7 @@ const AllMemes:FC<IAllMemes> = ({ pageRefresh }) => {
       ) : (
         <MemesContainer>
           <WebsiteChoose changeScraperDisplay={changeScraperDisplay} />
-          {allMemes.map((meme: any) => (
+          {allMemes.map((meme) => (
             <Meme
               key={meme.id}
               title={meme.title}
