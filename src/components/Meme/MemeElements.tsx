@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../utils/sizeBreakpoints";
 
 export const MemeContainer = styled.div<{margin: string | undefined }>`
   max-width: 60%;
@@ -8,6 +9,15 @@ export const MemeContainer = styled.div<{margin: string | undefined }>`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  @media ${device.tablet} { 
+    max-width: 80%;
+}
+
+@media ${device.mobileL} { 
+    max-width: 95%;
+}
+
 `;
 
 export const TitleContainer = styled.div`
@@ -23,6 +33,18 @@ export const Title = styled.h1`
   text-align: center;
   margin: 1rem;
   color: ${({ theme }) => theme.colors.white};
+
+  @media ${device.tablet} { 
+    font-size: 1.7rem;
+}
+
+@media ${device.mobileL} { 
+  font-size: 1.5rem;
+}
+
+@media ${device.mobileS} { 
+  font-size: 1.3rem;
+}
 `;
 
 export const Image = styled.img`

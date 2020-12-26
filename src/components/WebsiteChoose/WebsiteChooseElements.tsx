@@ -1,15 +1,34 @@
 import styled from "styled-components";
+import {device} from '../../utils/sizeBreakpoints'
 
 export const WebsiteChooseContainer = styled.div`
   display: flex;
   padding: 2rem;
   margin-bottom: 2rem;
+
+  @media ${device.mobileM} { 
+    padding: 1.4rem;
+}
+
+
+@media ${device.mobileS} { 
+  padding: 0rem;
+}
 `;
 
 export const ChooseTitle = styled.h1`
   color: ${({ theme }) => theme.colors.white};
   font-size: 1.7rem;
   margin: 4rem 0 2rem 0;
+  text-align: center;
+
+  @media ${device.tablet} { 
+    font-size: 1.4rem;
+  }
+
+  @media ${device.mobileM} { 
+    font-size: 1.3rem;
+  }
 `;
 
 export const ImageContainer = styled.div<{show:any}>`
@@ -31,4 +50,15 @@ export const WebsiteToChoose = styled.img<{show:any}>`
 
   display: inline-block;
   position: relative;
-`;
+
+
+  @media ${device.tablet} { 
+  width: 120px;
+  height: 50px
+}
+
+@media ${device.mobileM} { 
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+`
+;
