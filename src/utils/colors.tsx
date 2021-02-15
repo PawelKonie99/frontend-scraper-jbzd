@@ -5,6 +5,7 @@ export const colors = {
   background: "#46494C",
   darkerBackground: "#212125",
   elements: "#B49AAF",
+  darkBlue: "#1c2236",
 };
 
 export default colors;

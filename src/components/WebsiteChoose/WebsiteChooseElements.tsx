@@ -1,42 +1,41 @@
 import styled from "styled-components";
-import {device} from '../../utils/sizeBreakpoints'
+import { device } from "../../utils/sizeBreakpoints";
 
 export const WebsiteChooseContainer = styled.div`
   display: flex;
   padding: 2rem;
   margin-bottom: 2rem;
 
-  @media ${device.mobileM} { 
+  @media ${device.mobileM} {
     padding: 1.4rem;
-}
+  }
 
-
-@media ${device.mobileS} { 
-  padding: 0rem;
-}
+  @media ${device.mobileS} {
+    padding: 0rem;
+  }
 `;
 
 export const ChooseTitle = styled.h1`
   color: ${({ theme }) => theme.colors.white};
   font-size: 1.7rem;
-  margin: 4rem 0 2rem 0;
+  margin: 1rem 0 2rem 0;
   text-align: center;
 
-  @media ${device.tablet} { 
+  @media ${device.tablet} {
     font-size: 1.4rem;
   }
 
-  @media ${device.mobileM} { 
+  @media ${device.mobileM} {
     font-size: 1.3rem;
   }
 `;
 
-export const ImageContainer = styled.div<{show:any}>`
+export const ImageContainer = styled.div<{ show: any }>`
   border-bottom: ${(props) =>
     props.show === "active" ? `3px solid #f1eeee` : ""};
 `;
 
-export const WebsiteToChoose = styled.img<{show:any}>`
+export const WebsiteToChoose = styled.img<{ show: any }>`
   src: ${(props) => props.src};
   cursor: pointer;
   width: 150px;
@@ -51,14 +50,12 @@ export const WebsiteToChoose = styled.img<{show:any}>`
   display: inline-block;
   position: relative;
 
+  @media ${device.tablet} {
+    width: 120px;
+    height: 50px;
+  }
 
-  @media ${device.tablet} { 
-  width: 120px;
-  height: 50px
-}
-
-@media ${device.mobileM} { 
-  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
-}
-`
-;
+  @media ${device.mobileM} {
+    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  }
+`;

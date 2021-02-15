@@ -12,18 +12,21 @@ import { useDispatch } from "react-redux";
 import store from "../../store";
 
 interface IWebsiteChoose {
-  changeScraperDisplay:  {
-    (scraperName: string,history: string[]) : void
-};
+  changeScraperDisplay: {
+    (scraperName: string, history: string[]): void;
+  };
 }
 
 const WebsiteChoose: FC<IWebsiteChoose> = ({ changeScraperDisplay }) => {
-  console.log(typeof changeScraperDisplay, 'changeScraperDisplay website choose' )
+  console.log(
+    typeof changeScraperDisplay,
+    "changeScraperDisplay website choose"
+  );
   const dispatch = useDispatch();
   const scraperInStore = store.getState().choosenWebsite.scraper;
 
   const changeWebsite = (website: string) => {
-    console.log(typeof website, 'website website choose')
+    console.log(typeof website, "website website choose");
     dispatch({
       type: "CHANGE_SCRAPER",
       payload: {
