@@ -3,6 +3,8 @@ import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import Button from "./Button";
+import LoginAndRegister from "./LoginAndRegister/LoginAndRegister";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function ModalT() {
+const LoginModal = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -35,9 +37,7 @@ export default function ModalT() {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        react-transition-group
-      </button>
+      <Button text={"Login"} onClick={handleOpen}></Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -58,4 +58,6 @@ export default function ModalT() {
       </Modal>
     </div>
   );
-}
+};
+
+export default LoginModal;

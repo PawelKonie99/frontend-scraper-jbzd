@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 interface IButton {
   text: string;
+  onClick?: () => void;
 }
 
 const ButtonStyle = styled.button`
@@ -23,8 +24,8 @@ const ButtonStyle = styled.button`
   }
 `;
 
-const Button: FC<IButton> = ({ text }) => {
-  return <ButtonStyle>{text}</ButtonStyle>;
+const Button: FC<IButton> = ({ text, onClick }) => {
+  return <ButtonStyle onClick={onClick}>{text}</ButtonStyle>;
 };
 
 export default Button;

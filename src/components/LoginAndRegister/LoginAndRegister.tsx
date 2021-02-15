@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import Button from "../Button";
-import Modal from "../LoginModal";
+import LoginModal from "../LoginModal";
+import RegisterModal from "../RegisterModal";
 
 const Container = styled.div`
   display: flex;
@@ -12,15 +12,15 @@ const Container = styled.div`
 
 const ButtonsWrapper = styled.div`
   margin: 1rem;
+  display: flex;
 `;
 
 const LoginAndRegister = () => {
   return (
     <Container>
       <ButtonsWrapper>
-        <Modal />
-        <Button text={"Login"} />
-        <Button text={"Register"} />
+        <LoginModal />
+        <RegisterModal />
       </ButtonsWrapper>
     </Container>
   );
