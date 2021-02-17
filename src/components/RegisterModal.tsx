@@ -36,7 +36,7 @@ const RegisterModal = () => {
 
   return (
     <div>
-      <Button text={"Register"} onClick={handleOpen}></Button>
+      <Button text={"Rejestracja"} onClick={handleOpen}></Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

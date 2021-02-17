@@ -1,9 +1,9 @@
-import React, { FC } from "react";
+import React from "react";
 import styled from "styled-components";
 
 interface IButton {
   text: string;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 const ButtonStyle = styled.button`
@@ -24,7 +24,7 @@ const ButtonStyle = styled.button`
   }
 `;
 
-const Button: FC<IButton> = ({ text, onClick }) => {
+const Button = ({ text, onClick }: IButton) => {
   return <ButtonStyle onClick={onClick}>{text}</ButtonStyle>;
 };
 

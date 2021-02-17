@@ -1,10 +1,9 @@
-import React, { useState, useEffect, FC } from "react";
+import React, { useState, useEffect } from "react";
 import Meme from "../../components/Meme/Meme";
 import Layout from "../../layout/Layout";
 import memeService from "../../services/memes";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { MemeContainer } from "./ChoosenMemeElements";
-import { stringify } from "querystring";
 
 interface IChoosenMeme {
   title?: string;
@@ -12,8 +11,10 @@ interface IChoosenMeme {
   id: string;
 }
 
-const ChoosenMeme:FC<IChoosenMeme> = ({ id }) => {
-  const [singleMeme, setSingleMeme] = useState<IChoosenMeme>({} as IChoosenMeme);
+const ChoosenMeme = ({ id }: IChoosenMeme) => {
+  const [singleMeme, setSingleMeme] = useState<IChoosenMeme>(
+    {} as IChoosenMeme
+  );
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {

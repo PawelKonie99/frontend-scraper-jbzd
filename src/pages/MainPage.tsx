@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import AllMemes from "../components/AllMemes/AllMemes";
 import Layout from "../layout/Layout";
 import LoginAndRegister from "../components/LoginAndRegister/LoginAndRegister";
@@ -14,7 +14,7 @@ interface IMainPage {
   };
 }
 
-const MainPage: FC<IMainPage> = ({ match }) => {
+const MainPage = ({ match }: IMainPage) => {
   console.log(typeof match, "Main page");
   console.log(match, "Main page");
   return (

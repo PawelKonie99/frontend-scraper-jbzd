@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Meme from "../components/Meme/Meme";
+import React from "react";
 import Layout from "../layout/Layout";
-import memeService from "../services/memes";
 import styled from "styled-components";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import ChoosenMeme from "../components/ChoosenMeme/ChoosenMeme";
 
 const MemeContainer = styled.div`

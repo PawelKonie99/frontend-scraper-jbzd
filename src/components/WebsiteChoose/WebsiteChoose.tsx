@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React from "react";
 import jebzdzidyLogo from "../../utils/images/dzida.jpg";
 import kwejkLogo from "../../utils/images/kwejk.png";
 import { Route } from "react-router-dom";
@@ -17,11 +17,7 @@ interface IWebsiteChoose {
   };
 }
 
-const WebsiteChoose: FC<IWebsiteChoose> = ({ changeScraperDisplay }) => {
-  console.log(
-    typeof changeScraperDisplay,
-    "changeScraperDisplay website choose"
-  );
+const WebsiteChoose = ({ changeScraperDisplay }: IWebsiteChoose) => {
   const dispatch = useDispatch();
   const scraperInStore = store.getState().choosenWebsite.scraper;
 

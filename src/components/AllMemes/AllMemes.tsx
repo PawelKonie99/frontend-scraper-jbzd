@@ -1,7 +1,7 @@
 import memeService from "../../services/memes";
-import React, { useState, useEffect, FC } from "react";
+import React, { useState, useEffect } from "react";
 import Meme from "../../components/Meme/Meme";
-import { Link, Route, RouteComponentProps } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import {
   MemesContainer,
   ButtonsContainer,
@@ -10,22 +10,22 @@ import {
 import CircularProgress from "@material-ui/core/CircularProgress";
 import WebsiteChoose from "../WebsiteChoose/WebsiteChoose";
 import store from "../../store";
-import { StaticContext } from "react-router";
-
 
 interface IAllMemes {
   pageRefresh: any;
-  changeScraperDisplay?:  {
-    (scraperName: string,history: string[],pageRefresh: string) : void
-};
+  changeScraperDisplay?: {
+    (scraperName: string, history: string[], pageRefresh: string): void;
+  };
 }
 
 interface IMeme {
   map(arg0: (meme: any) => JSX.Element): React.ReactNode;
-  id:string, title:string, photoUrl:string,
+  id: string;
+  title: string;
+  photoUrl: string;
 }
 
-const AllMemes:FC<IAllMemes> = ({ pageRefresh }) => {
+const AllMemes = ({ pageRefresh }: IAllMemes) => {
   const [allMemes, setAllMemes] = useState<IMeme>({} as IMeme);
   const [page, setPage] = useState<number>(1);
   const [scraperName, setScraperName] = useState<string>("jebzdzidy");

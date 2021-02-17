@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { Link, Route } from "react-router-dom";
 import { MemeContainer, Title, Image, TitleContainer } from "./MemeElements";
 
@@ -10,15 +10,12 @@ interface IMeme {
   margin?: string;
 }
 
-
-
-const Meme:FC<IMeme> = ({ margin, title, url, id }) => {
-
+const Meme = ({ margin, title, url, id }: IMeme) => {
   const pickSingleMeme = (history: any, id: string | undefined) => {
     <Link to={`/${id}`}></Link>;
     history.push(`/${id}`);
   };
-  
+
   return (
     <Route
       render={({ history }) => (

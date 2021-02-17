@@ -1,6 +1,6 @@
-import React, { FC } from "react";
+import React from "react";
 import styled from "styled-components";
-import LoginModal from "../LoginModal";
+import LoginModal from "../ValidationModal";
 import RegisterModal from "../RegisterModal";
 
 const Container = styled.div`
@@ -16,11 +16,27 @@ const ButtonsWrapper = styled.div`
 `;
 
 const LoginAndRegister = () => {
+  const handleLogin = () => {
+    console.log("elo");
+  };
+
+  const handleRegister = () => {
+    console.log("elo");
+  };
+
   return (
     <Container>
       <ButtonsWrapper>
-        <LoginModal />
-        <RegisterModal />
+        <LoginModal
+          title={"Zaloguj się"}
+          operationType={"Logowanie"}
+          handleValidation={handleLogin}
+        />
+        <LoginModal
+          title={"Zarejestruj się"}
+          operationType={"Rejestracja"}
+          handleValidation={handleRegister}
+        />
       </ButtonsWrapper>
     </Container>
   );
