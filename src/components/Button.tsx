@@ -3,10 +3,14 @@ import styled from "styled-components";
 
 interface IButton {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
+  onSubmit?: any;
+  type?: string;
 }
 
-const ButtonStyle = styled.button`
+const ButtonStyle = styled.button.attrs({
+  // type:
+})`
   padding: 0.4rem 1rem;
   background: ${({ theme }) => theme.colors.darkBlue};
   margin: 0.3rem;

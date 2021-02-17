@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import LoginModal from "../ValidationModal";
-import RegisterModal from "../RegisterModal";
+import validationService from "../../services/userValidation";
+import IUser from "../../interfaces/UserInterface";
 
 const Container = styled.div`
   display: flex;
@@ -16,12 +17,17 @@ const ButtonsWrapper = styled.div`
 `;
 
 const LoginAndRegister = () => {
-  const handleLogin = () => {
-    console.log("elo");
+  const handleLogin = async (credentials: IUser) => {
+    try {
+      const loggedUser = await validationService.login(credentials);
+    } catch (e) {
+      console.log("Error while login");
+    }
   };
 
-  const handleRegister = () => {
-    console.log("elo");
+  const handleRegister = async (credentials: IUser) => {
+    console.log("elko");
+    await validationService.register(credentials);
   };
 
   return (

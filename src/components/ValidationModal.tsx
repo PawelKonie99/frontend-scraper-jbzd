@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Button from "./Button";
 import styled from "styled-components";
+import IUser from "../interfaces/UserInterface";
 
 const ModalForm = styled.form`
   padding: 2rem 5rem;
@@ -38,7 +39,7 @@ const Input = styled.input`
 interface IModal {
   title: string;
   operationType: string;
-  handleValidation: () => void;
+  handleValidation: (credentials: IUser) => void;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -58,7 +59,9 @@ const ValidationModal = ({
   handleValidation,
 }: IModal) => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleOpen = () => {
     setOpen(true);
@@ -66,6 +69,11 @@ const ValidationModal = ({
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleValidationMethod = async (event: any) => {
+    event.preventDefault();
+    handleValidation({ username, password });
   };
 
   return (
@@ -84,7 +92,7 @@ const ValidationModal = ({
         }}
       >
         <Fade in={open}>
-          <ModalForm>
+          <ModalForm onSubmit={handleValidationMethod}>
             <InputContainer>
               <Label>Login</Label>
               <Input
@@ -93,6 +101,7 @@ const ValidationModal = ({
                 name="login"
                 placeholder="Login ..."
                 required
+                onChange={({ target }) => setUsername(target.value)}
               />
             </InputContainer>
             <InputContainer>
@@ -103,9 +112,10 @@ const ValidationModal = ({
                 name="password"
                 placeholder="Hasło ..."
                 required
+                onChange={({ target }) => setPassword(target.value)}
               />
             </InputContainer>
-            <Button text={title} onClick={handleValidation}></Button>
+            <Button type="submit" text={title}></Button>
           </ModalForm>
         </Fade>
       </Modal>
