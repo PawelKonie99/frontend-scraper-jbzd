@@ -1,7 +1,7 @@
-import IUser from "../interfaces/UserInterface";
+// import IUser from "../interfaces/UserInterface";
 export {};
 
-interface IUserRedcuer extends IUser {
+interface IUserRedcuer {
   type: string;
 }
 
@@ -16,12 +16,11 @@ export const userReducer = (state = "", action: IUserRedcuer) => {
   }
 };
 
-export const setUser = (username: string, password: string) => {
+export const setUser = (username: string) => {
   return {
     type: "SET_USER",
     payload: {
       username,
-      password,
     },
   };
 };

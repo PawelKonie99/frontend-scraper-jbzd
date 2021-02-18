@@ -4,6 +4,8 @@ import LoginModal from "../ValidationModal";
 import validationService from "../../services/userValidation";
 import IUser from "../../interfaces/UserInterface";
 import { Logger } from "../Logger";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../reducers/userReducer";
 
 const Container = styled.div`
   display: flex;
@@ -29,10 +31,15 @@ const LoginAndRegister = () => {
   const [registeredUserFailed, setRegisteredUserFailed] = useState<boolean>(
     false
   );
+  const dispatch = useDispatch();
 
   const handleLogin = async (credentials: IUser) => {
     try {
       const loggedUser = await validationService.login(credentials);
+
+      window.localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+      // blogService.handleToken(loggedUser.token);
+      dispatch(setUser(loggedUser.username));
     } catch (e) {
       console.log("Error while login");
     }
