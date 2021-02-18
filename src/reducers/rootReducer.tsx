@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import choosenWebsiteReducer from "./choosenWebsiteReducer";
+import { choosenWebsiteReducer } from "./choosenWebsiteReducer";
+import { userReducer } from "./userReducer";
 
 const rootReducer = combineReducers({
-  choosenWebsite: choosenWebsiteReducer,
+  choosenWebsiteReducer: choosenWebsiteReducer,
+  userReducer: userReducer,
 });
 
 export default rootReducer;

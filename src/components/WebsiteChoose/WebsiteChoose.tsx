@@ -10,6 +10,7 @@ import {
 } from "./WebsiteChooseElements";
 import { useDispatch } from "react-redux";
 import store from "../../store";
+import { chooseWebsite } from "../../reducers/choosenWebsiteReducer";
 
 interface IWebsiteChoose {
   changeScraperDisplay: {
@@ -19,16 +20,10 @@ interface IWebsiteChoose {
 
 const WebsiteChoose = ({ changeScraperDisplay }: IWebsiteChoose) => {
   const dispatch = useDispatch();
-  const scraperInStore = store.getState().choosenWebsite.scraper;
+  const scraperInStore = store.getState().choosenWebsiteReducer.scraper;
 
   const changeWebsite = (website: string) => {
-    console.log(typeof website, "website website choose");
-    dispatch({
-      type: "CHANGE_SCRAPER",
-      payload: {
-        scraper: website,
-      },
-    });
+    dispatch(chooseWebsite(website));
   };
 
   const handleClick = (scraperName: string, history: string[]) => {

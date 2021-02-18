@@ -31,7 +31,7 @@ const AllMemes = ({ pageRefresh }: IAllMemes) => {
   const [scraperName, setScraperName] = useState<string>("jebzdzidy");
   const [loading, setLoading] = useState<boolean>(true);
 
-  const scraperInStore: string = store.getState().choosenWebsite.scraper;
+  const scraperInStore: string = store.getState().choosenWebsiteReducer.scraper;
 
   const fetchUrlAfterRefresh = () => {
     if (pageRefresh) {

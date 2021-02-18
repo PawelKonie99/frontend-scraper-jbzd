@@ -59,7 +59,7 @@ const ValidationModal = ({
   handleValidation,
 }: IModal) => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -74,6 +74,8 @@ const ValidationModal = ({
   const handleValidationMethod = async (event: any) => {
     event.preventDefault();
     handleValidation({ username, password });
+
+    handleClose();
   };
 
   return (
@@ -107,7 +109,7 @@ const ValidationModal = ({
             <InputContainer>
               <Label>Hasło</Label>
               <Input
-                type="text"
+                type="password"
                 id="password"
                 name="password"
                 placeholder="Hasło ..."

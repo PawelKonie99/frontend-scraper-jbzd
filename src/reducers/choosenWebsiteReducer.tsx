@@ -2,7 +2,7 @@ const initialState = {
   scraper: "jebzdzidy",
 };
 
-const choosenWebsiteReducer = (state = initialState, action: any) => {
+export const choosenWebsiteReducer = (state = initialState, action: any) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -16,4 +16,11 @@ const choosenWebsiteReducer = (state = initialState, action: any) => {
   }
 };
 
-export default choosenWebsiteReducer;
+export const chooseWebsite = (website: string) => {
+  return {
+    type: "CHANGE_SCRAPER",
+    payload: {
+      scraper: website,
+    },
+  };
+};
