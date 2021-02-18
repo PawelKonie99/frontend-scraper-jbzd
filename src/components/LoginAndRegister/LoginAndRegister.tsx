@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import LoginModal from "../ValidationModal";
 import validationService from "../../services/userValidation";
-import IUser from "../../interfaces/UserInterface";
+import { IUser } from "../../interfaces/UserInterface";
 import { Logger } from "../Logger";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../reducers/userReducer";
@@ -37,7 +37,7 @@ const LoginAndRegister = () => {
     try {
       const loggedUser = await validationService.login(credentials);
 
-      window.localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+      // window.localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
       // blogService.handleToken(loggedUser.token);
       dispatch(setUser(loggedUser.username));
     } catch (e) {

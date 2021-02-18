@@ -5,7 +5,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Button from "./Button";
 import styled from "styled-components";
-import IUser from "../interfaces/UserInterface";
+import { IUser } from "../interfaces/UserInterface";
 
 const ModalForm = styled.form`
   padding: 2rem 5rem;

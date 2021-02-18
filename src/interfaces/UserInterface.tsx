@@ -1,6 +1,12 @@
-interface IUser {
+export interface IUser {
   username: string;
   password: string;
 }
 
-export default IUser;
+export interface IUserReducer {
+  user: {
+    payload: {
+      username: string;
+    };
+  };
+}
