@@ -2,7 +2,11 @@ import React from "react";
 import AllMemes from "../components/AllMemes/AllMemes";
 import Layout from "../layout/Layout";
 import LoginAndRegister from "../components/LoginAndRegister/LoginAndRegister";
+import { useSelector } from "react-redux";
+import rootReducer from "../reducers/rootReducer";
+import { IUserReducer } from "../interfaces/UserInterface";
 
+export type RootState = ReturnType<typeof rootReducer>;
 interface IMainPage {
   match?: {
     isExact: boolean;
@@ -15,11 +19,14 @@ interface IMainPage {
 }
 
 const MainPage = ({ match }: IMainPage) => {
-  console.log(typeof match, "Main page");
-  console.log(match, "Main page");
+  const isUserLogged: IUserReducer = useSelector(
+    (state: RootState) => state.userReducer
+  );
+  const username = isUserLogged.user;
+
   return (
     <Layout>
-      <LoginAndRegister />
+      {username ? null : <LoginAndRegister />}
       <AllMemes pageRefresh={match ? match?.params.page : 1} />
     </Layout>
   );
