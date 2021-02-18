@@ -75,6 +75,8 @@ const ValidationModal = ({
     event.preventDefault();
     handleValidation({ username, password });
 
+    setUsername("");
+    setPassword("");
     handleClose();
   };
 
