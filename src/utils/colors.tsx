@@ -6,7 +6,7 @@ export const colors = {
   darkerBackground: "#212125",
   elements: "#B49AAF",
   darkBlue: "#1c2236",
-  // userColor: "#5d6b99",
+  logout: "#723737",
 };
 
 export default colors;

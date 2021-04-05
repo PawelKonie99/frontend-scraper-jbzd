@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "../../utils/sizeBreakpoints";
+import { Itheme } from "../../utils/theme";
 
 export const WebsiteChooseContainer = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ export const WebsiteChooseContainer = styled.div`
 `;
 
 export const ChooseTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }: { theme: Itheme }) => theme.colors.white};
   font-size: 1.7rem;
   margin: 1rem 0 2rem 0;
   text-align: center;

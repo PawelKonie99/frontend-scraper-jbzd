@@ -6,25 +6,12 @@ import { IUser } from "../../interfaces/UserInterface";
 import { Logger } from "../Logger/Logger";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../reducers/userReducer";
-
-const Container = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  background: ${({ theme }) => theme.colors.background};
-`;
-
-const ButtonsWrapper = styled.div`
-  margin: 1rem;
-  display: flex;
-`;
-
-const ButtonAndInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+import { Itheme } from "../../utils/theme";
+import {
+  Container,
+  ButtonsWrapper,
+  ButtonAndInfo,
+} from "./LoginAndRegisterElements";
 
 const LoginAndRegister = () => {
   const [registeredUser, setRegisteredUser] = useState<boolean>(false);
@@ -44,11 +31,11 @@ const LoginAndRegister = () => {
       setTimeout(() => {
         setLoginUserFailed(false);
         setIsLoginCorrect(false);
-      }, 3000);
+      }, 1500);
 
       setTimeout(() => {
         dispatch(setUser(loggedUser.username));
-      }, 3000);
+      }, 1500);
     } catch (e) {
       console.log("Error while login");
     }

@@ -1,6 +1,19 @@
 import colors from "./colors";
 
-const theme = {
+export interface Itheme {
+  colors: {
+    white: string;
+    black: string;
+    offWhite: string;
+    background: string;
+    darkerBackground: string;
+    elements: string;
+    darkBlue: string;
+    logout: string;
+  };
+}
+
+const theme: Itheme = {
   colors,
 };
 

@@ -1,35 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import { Itheme } from "../../utils/theme";
+import { ButtonStyle } from "./ButtonElements";
 
 interface IButton {
   text: string;
   onClick?: () => void;
   onSubmit?: any;
   type?: string;
+  color?: any; //todo put here string
 }
 
-const ButtonStyle = styled.button.attrs({
-  // type:
-})`
-  padding: 0.4rem 1rem;
-  background: ${({ theme }) => theme.colors.darkBlue};
-  margin: 0.3rem;
-  border-radius: 3px;
-  color: ${({ theme }) => theme.colors.offWhite};
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.darkBlue};
-    background: ${({ theme }) => theme.colors.offWhite};
-    transition: 0.3s;
-  }
-`;
-
-const Button = ({ text, onClick }: IButton) => {
-  return <ButtonStyle onClick={onClick}>{text}</ButtonStyle>;
+const Button = ({ text, onClick, color }: IButton) => {
+  return (
+    <ButtonStyle color={color} onClick={onClick}>
+      {text}
+    </ButtonStyle>
+  );
 };
 
 export default Button;
