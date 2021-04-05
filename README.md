@@ -14,7 +14,6 @@ backend - https://github.com/PawelKonie99/scrapers-backend
 - Project was created in reactjs + typescript + redux
 
 - Libraries used in project:
-
 * axios
 * styled-components
 * material-ui
