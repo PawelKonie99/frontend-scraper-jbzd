@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import LoginModal from "../ValidationModal";
+import LoginModal from "../ValidatorModal/ValidationModal";
 import validationService from "../../services/userValidation";
 import { IUser } from "../../interfaces/UserInterface";
-import { Logger } from "../Logger";
+import { Logger } from "../Logger/Logger";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../reducers/userReducer";
 
@@ -31,15 +31,24 @@ const LoginAndRegister = () => {
   const [registeredUserFailed, setRegisteredUserFailed] = useState<boolean>(
     false
   );
+  const [loginUserFailed, setLoginUserFailed] = useState<boolean>(false);
+  const [isLoginCorrect, setIsLoginCorrect] = useState<boolean>(false);
+
   const dispatch = useDispatch();
 
   const handleLogin = async (credentials: IUser) => {
     try {
       const loggedUser = await validationService.login(credentials);
+      loggedUser?.username ? setIsLoginCorrect(true) : setLoginUserFailed(true);
 
-      // window.localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
-      // blogService.handleToken(loggedUser.token);
-      dispatch(setUser(loggedUser.username));
+      setTimeout(() => {
+        setLoginUserFailed(false);
+        setIsLoginCorrect(false);
+      }, 3000);
+
+      setTimeout(() => {
+        dispatch(setUser(loggedUser.username));
+      }, 3000);
     } catch (e) {
       console.log("Error while login");
     }
@@ -58,9 +67,6 @@ const LoginAndRegister = () => {
     }, 5000);
   };
 
-  console.log(registeredUser);
-  console.log(registeredUserFailed);
-
   return (
     <Container>
       <ButtonAndInfo>
@@ -77,10 +83,16 @@ const LoginAndRegister = () => {
           />
         </ButtonsWrapper>
         {registeredUser ? (
-          <Logger text="Użytkownik zarejestrowany pomyślnie" color="green" />
+          <Logger text="Zarejestrowano, zaloguj się" color="green" />
         ) : null}
         {registeredUserFailed ? (
           <Logger text="Błąd podczas rejestracji" color="red" />
+        ) : null}
+        {isLoginCorrect ? (
+          <Logger text="Użytkownik zalogowany pomyślnie" color="green" />
+        ) : null}
+        {loginUserFailed ? (
+          <Logger text="Zły login lub hasło" color="red" />
         ) : null}
       </ButtonAndInfo>
     </Container>
