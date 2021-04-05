@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import UserAddMeme from "../UserAddMeme/UserInterface";
+import UserAddMeme from "../UserInterface/UserInterface";
 import { Itheme } from "../../utils/theme";
 import { Container, UsernameForm } from "./LoggedUserElements";
 
@@ -8,7 +8,7 @@ interface ILoggedUser {
   username: string;
 }
 
-export const LoggedUser = ({ username }: ILoggedUser) => {
+const LoggedUser = ({ username }: ILoggedUser) => {
   return (
     <Container>
       <UsernameForm>Nazwa użytkownika: {username}</UsernameForm>
@@ -16,3 +16,5 @@ export const LoggedUser = ({ username }: ILoggedUser) => {
     </Container>
   );
 };
+
+export default LoggedUser;

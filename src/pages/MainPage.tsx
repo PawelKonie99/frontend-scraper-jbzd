@@ -5,7 +5,7 @@ import LoginAndRegister from "../components/LoginAndRegister/LoginAndRegister";
 import { useSelector } from "react-redux";
 import rootReducer from "../reducers/rootReducer";
 import { IUserReducer } from "../interfaces/UserInterface";
-import { LoggedUser } from "../components/LoggedUser/LoggedUser";
+import LoggedUser from "../components/LoggedUser/LoggedUser";
 
 export type RootState = ReturnType<typeof rootReducer>;
 interface IMainPage {
@@ -24,7 +24,6 @@ const MainPage = ({ match }: IMainPage) => {
     (state: RootState) => state.userReducer
   );
   const username = isUserLogged.user;
-
   return (
     <Layout>
       {username ? (
