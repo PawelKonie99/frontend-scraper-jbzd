@@ -34,7 +34,8 @@ const LoginAndRegister = () => {
       }, 1500);
 
       setTimeout(() => {
-        dispatch(setUser(loggedUser.username));
+        console.log(loggedUser, "loggedUser");
+        dispatch(setUser(loggedUser));
       }, 1500);
     } catch (e) {
       console.log("Error while login");

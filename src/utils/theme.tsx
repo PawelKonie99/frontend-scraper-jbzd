@@ -10,6 +10,8 @@ export interface Itheme {
     elements: string;
     darkBlue: string;
     logout: string;
+    error: string;
+    success: string;
   };
 }
 

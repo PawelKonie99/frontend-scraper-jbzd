@@ -36,7 +36,7 @@ const SingleMemePage = ({ match }: IsingleMemePage) => {
 
   return (
     <Layout>
-      <LoggedUser username={username.payload.username} />
+      <LoggedUser username={username.payload.user.username} />
       <ChoosenMeme id={match.params.id} />
     </Layout>
   );

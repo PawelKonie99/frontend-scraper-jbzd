@@ -5,6 +5,7 @@ interface IUserRedcuer {
   type: string;
   payload: {
     username: string;
+    token: string;
   };
 }
 
@@ -20,12 +21,12 @@ export const userReducer = (state = "", action: IUserRedcuer) => {
   }
 };
 
-export const setUser = (username: string) => {
-  console.log(username);
+export const setUser = (user: string) => {
+  console.log(user);
   return {
     type: "SET_USER",
     payload: {
-      username,
+      user,
     },
   };
 };

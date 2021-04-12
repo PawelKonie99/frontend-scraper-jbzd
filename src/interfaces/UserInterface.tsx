@@ -6,7 +6,10 @@ export interface IUser {
 export interface IUserReducer {
   user: {
     payload: {
-      username: string;
+      user: {
+        username: string;
+        token: string;
+      };
     };
   };
 }

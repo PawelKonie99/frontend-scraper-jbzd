@@ -27,7 +27,7 @@ const MainPage = ({ match }: IMainPage) => {
   return (
     <Layout>
       {username ? (
-        <LoggedUser username={username.payload.username} />
+        <LoggedUser username={username.payload.user.username} />
       ) : (
         <LoginAndRegister />
       )}

@@ -33,7 +33,7 @@ const AllMemes = ({ pageRefresh }: IAllMemes) => {
 
   const scraperInStore: string = store.getState().choosenWebsiteReducer.scraper;
 
-  const fetchUrlAfterRefresh = () => {
+  const fetchUrlAfterRefresh = (): void => {
     if (pageRefresh) {
       setPage(parseInt(pageRefresh));
       setScraperName(scraperInStore);
@@ -41,13 +41,16 @@ const AllMemes = ({ pageRefresh }: IAllMemes) => {
     return;
   };
 
-  const fetchMemes = async () => {
+  const fetchMemes = async (): Promise<void> => {
     const memes = await memeService.getAll(page, scraperName);
     setAllMemes(memes.results);
     setLoading(false);
   };
 
-  const changeScraperDisplay = (scaperName: string, history: string[]) => {
+  const changeScraperDisplay = (
+    scaperName: string,
+    history: string[]
+  ): void => {
     setPage(1);
     <Link to={"/page/1"}></Link>;
     history.push(`/page/1`);
@@ -60,13 +63,13 @@ const AllMemes = ({ pageRefresh }: IAllMemes) => {
     window.scrollTo(0, 0);
   }, [page, scraperName]);
 
-  const nextPage = (history: string[]) => {
+  const nextPage = (history: string[]): void => {
     setPage(page + 1);
     <Link to={`/page/${page + 1}`}></Link>;
     history.push(`/page/${page + 1}`);
   };
 
-  const previousPage = (history: string[]) => {
+  const previousPage = (history: string[]): void => {
     if (page > 1) {
       setPage(page - 1);
       <Link to={`/page/${page - 1}`}></Link>;
