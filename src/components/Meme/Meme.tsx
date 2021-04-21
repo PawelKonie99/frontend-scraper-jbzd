@@ -7,12 +7,21 @@ interface IMeme {
   title?: string;
   url?: any;
   id?: string;
+  buffer?: any;
   margin?: string;
   scraperName?: string;
   mimeType?: string;
 }
 
-const Meme = ({ margin, title, url, id, scraperName, mimeType }: IMeme) => {
+const Meme = ({
+  margin,
+  title,
+  url,
+  id,
+  scraperName,
+  mimeType,
+  buffer,
+}: IMeme) => {
   const [b64, setB64] = useState("");
 
   const pickSingleMeme = (history: any, id: string | undefined) => {
@@ -22,7 +31,7 @@ const Meme = ({ margin, title, url, id, scraperName, mimeType }: IMeme) => {
 
   useEffect(() => {
     if (scraperName === "usersMemes" && mimeType) {
-      const buffer = url; // e.g., <Buffer 89 50 4e ... >
+      // const buffer = url;
       const b64 = Buffer.from(buffer).toString("base64");
       setB64(b64);
     }

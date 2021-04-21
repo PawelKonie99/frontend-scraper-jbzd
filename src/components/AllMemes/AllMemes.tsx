@@ -102,7 +102,7 @@ const AllMemes = ({ pageRefresh }: IAllMemes) => {
                 <Meme
                   key={meme.id}
                   title={meme.title}
-                  url={meme?.buffer?.data}
+                  buffer={meme?.buffer?.data}
                   id={meme.id}
                   scraperName={scraperName}
                   mimeType={meme.MimeType}
