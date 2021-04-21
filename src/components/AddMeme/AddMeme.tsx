@@ -39,13 +39,18 @@ const AddMemePage = () => {
 
   const handleAddImage = (event: any): void => {
     console.log(event);
-    const file = URL.createObjectURL(event.target.files[0]);
+    // const file = URL.createObjectURL(event.target.files[0]);
+    const file = event.target.files[0];
     console.log(event.target.files[0]);
     setImage(file);
   };
 
   const handleAddMeme = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    const data = new FormData();
+    data.append("newMeme", image);
+    data.append("title", title);
+    console.log(data);
 
     if (image && title) {
       //tutaj dodajemy mema do bazy
@@ -57,7 +62,7 @@ const AddMemePage = () => {
         title,
         photoUrl: image,
       };
-      const addMemeResult = addMemeService.addMemeToDb(objectToSend, config);
+      const addMemeResult = addMemeService.addMemeToDb(data, config);
 
       setImage("");
       setTitle("");
@@ -80,7 +85,7 @@ const AddMemePage = () => {
   //   onChange={({ target }) => setUsername(target.value)}
   return (
     <AddMemeContainer>
-      <AddMemeForm onSubmit={handleAddMeme}>
+      <AddMemeForm encType="multipart/form-data" onSubmit={handleAddMeme}>
         <Input
           placeholder="Dodaj tytuł"
           type="text"
@@ -89,6 +94,7 @@ const AddMemePage = () => {
         />
         <Image src={image} alt="" />
         <InputFile
+          name="newMeme"
           type="file"
           id="input"
           accept="image/*"

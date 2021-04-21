@@ -88,14 +88,26 @@ const AllMemes = ({ pageRefresh }: IAllMemes) => {
       ) : (
         <MemesContainer>
           <WebsiteChoose changeScraperDisplay={changeScraperDisplay} />
-          {allMemes.map((meme) => (
-            <Meme
-              key={meme.id}
-              title={meme.title}
-              url={meme.photoUrl}
-              id={meme.id}
-            />
-          ))}
+          {scraperName !== "usersMemes"
+            ? allMemes.map((meme) => (
+                <Meme
+                  key={meme.id}
+                  title={meme.title}
+                  url={meme.photoUrl}
+                  id={meme.id}
+                  scraperName={scraperName}
+                />
+              ))
+            : allMemes.map((meme) => (
+                <Meme
+                  key={meme.id}
+                  title={meme.title}
+                  url={meme?.buffer?.data}
+                  id={meme.id}
+                  scraperName={scraperName}
+                  mimeType={meme.MimeType}
+                />
+              ))}
           <Route
             render={({ history }: any) => (
               <ButtonsContainer>

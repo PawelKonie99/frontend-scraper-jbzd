@@ -1,6 +1,7 @@
 import React from "react";
 import jebzdzidyLogo from "../../utils/images/dzida.jpg";
 import kwejkLogo from "../../utils/images/kwejk.png";
+import usersMemesLogo from "../../utils/images/usersmemes.jpg";
 import { Route } from "react-router-dom";
 import {
   WebsiteChooseContainer,
@@ -52,6 +53,15 @@ const WebsiteChoose = ({ changeScraperDisplay }: IWebsiteChoose) => {
                   show={scraperInStore === "kwejk" ? "active" : ""}
                   src={kwejkLogo}
                   onClick={() => handleClick("kwejk", history)}
+                />
+              </ImageContainer>
+              <ImageContainer
+                show={scraperInStore === "usersMemes" ? "active" : ""}
+              >
+                <WebsiteToChoose
+                  show={scraperInStore === "usersMemes" ? "active" : ""}
+                  src={usersMemesLogo}
+                  onClick={() => handleClick("usersMemes", history)}
                 />
               </ImageContainer>
             </>
