@@ -105,7 +105,7 @@ const AllMemes = ({ pageRefresh }: IAllMemes) => {
                   buffer={meme?.buffer?.data}
                   id={meme.id}
                   scraperName={scraperName}
-                  mimeType={meme.MimeType}
+                  mimeType={meme.mimeType}
                 />
               ))}
           <Route
