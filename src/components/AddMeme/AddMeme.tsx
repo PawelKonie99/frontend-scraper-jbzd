@@ -7,12 +7,14 @@ import {
   Input,
   MissingValueError,
   Success,
+  BackToMain,
 } from "./AddMemeElements";
 import addMemeService from "../../services/addMeme";
 import { IUserReducer } from "../../interfaces/UserInterface";
 import { useSelector } from "react-redux";
 import { RootState } from "../../pages/MainPage";
 import Button from "../Button/Button";
+import { Link, Route } from "react-router-dom";
 
 interface IobjectToSend {
   title: string;
@@ -26,6 +28,7 @@ const AddMemePage = () => {
   const [missingImageErr, setMissingImageErr] = useState<boolean>(false);
   const [missingTitleErr, setMissingTitleErr] = useState<boolean>(false);
   const [succesAdded, setSuccessAdded] = useState<boolean>(false);
+  const [fileTitle, setFileTitle] = useState("");
 
   const isUserLogged: IUserReducer = useSelector(
     (state: RootState) => state.userReducer
@@ -38,10 +41,9 @@ const AddMemePage = () => {
   };
 
   const handleAddImage = (event: any): void => {
-    console.log(event);
+    setFileTitle(event.target.files[0].name);
     // const file = URL.createObjectURL(event.target.files[0]);
     const file = event.target.files[0];
-    console.log(event.target.files[0]);
     setImage(file);
   };
 
@@ -50,7 +52,6 @@ const AddMemePage = () => {
     const data = new FormData();
     data.append("newMeme", image);
     data.append("title", title);
-    console.log(data);
 
     if (image && title) {
       //tutaj dodajemy mema do bazy
@@ -58,10 +59,6 @@ const AddMemePage = () => {
         headers: { Authorization: `bearer ${user.payload.user.token}` },
       };
 
-      const objectToSend: IobjectToSend = {
-        title,
-        photoUrl: image,
-      };
       const addMemeResult = addMemeService.addMemeToDb(data, config);
 
       setImage("");
@@ -79,12 +76,19 @@ const AddMemePage = () => {
     setTimeout(() => {
       setMissingImageErr(false);
       setMissingTitleErr(false);
+      setSuccessAdded(false);
     }, 1500);
   };
 
   //   onChange={({ target }) => setUsername(target.value)}
   return (
     <AddMemeContainer>
+      <Link
+        style={{ textDecoration: "none", marginBottom: "3rem" }}
+        to={"/page/1"}
+      >
+        <BackToMain>Powrót do strony głównej</BackToMain>
+      </Link>
       <AddMemeForm encType="multipart/form-data" onSubmit={handleAddMeme}>
         <Input
           placeholder="Dodaj tytuł"

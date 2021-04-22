@@ -11,6 +11,7 @@ interface IMeme {
   margin?: string;
   scraperName?: string;
   mimeType?: string;
+  blocked?: boolean;
 }
 
 const Meme = ({
@@ -21,23 +22,24 @@ const Meme = ({
   scraperName,
   mimeType,
   buffer,
+  blocked,
 }: IMeme) => {
   const [b64, setB64] = useState("");
 
   const pickSingleMeme = (history: any, id: string | undefined) => {
-    <Link to={`/${id}`}></Link>;
-    history.push(`/${id}`);
+    if (!blocked) {
+      <Link to={`/${id}`}></Link>;
+      history.push(`/${id}`);
+    }
   };
 
   useEffect(() => {
-    if (scraperName === "usersMemes" && mimeType) {
-      // const buffer = url;
+    if (buffer && mimeType) {
       const b64 = Buffer.from(buffer).toString("base64");
       setB64(b64);
     }
   }, []);
 
-  console.log(`data:${mimeType};base64,${b64}`);
   return (
     <Route
       render={({ history }) => (

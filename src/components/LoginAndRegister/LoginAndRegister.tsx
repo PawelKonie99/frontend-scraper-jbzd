@@ -34,7 +34,6 @@ const LoginAndRegister = () => {
       }, 1500);
 
       setTimeout(() => {
-        console.log(loggedUser, "loggedUser");
         dispatch(setUser(loggedUser));
       }, 1500);
     } catch (e) {

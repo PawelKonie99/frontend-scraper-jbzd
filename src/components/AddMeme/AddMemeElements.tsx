@@ -60,3 +60,14 @@ export const Image = styled.img`
   max-width: 600px;
   margin-bottom: 2rem;
 `;
+
+export const BackToMain = styled.a`
+  text-decoration: none !important;
+  font-size: 2rem;
+  margin: 3rem;
+  color: ${({ theme }: { theme: Itheme }) => theme.colors.offWhite};
+
+  :hover {
+    color: ${({ theme }: { theme: Itheme }) => theme.colors.white};
+  }
+`;
