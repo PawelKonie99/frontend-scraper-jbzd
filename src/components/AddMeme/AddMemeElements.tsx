@@ -1,5 +1,18 @@
-import { Itheme } from "../../utils/theme";
 import styled from "styled-components";
+import { device } from "../../utils/sizeBreakpoints";
+import { Itheme } from "../../utils/theme";
+
+// @media ${device.tablet} {
+//   font-size: 1.4rem;
+// }
+
+// @media ${device.mobileM} {
+//   font-size: 1.3rem;
+// }
+
+// @media ${device.mobileS} {
+//   padding: 0rem;
+// }
 
 export const AddMemeContainer = styled.div`
   min-height: 100vh;
@@ -29,7 +42,23 @@ export const InputFile = styled.input`
 export const AddMemeForm = styled.form`
   display: flex;
   flex-direction: column;
+
   min-width: 600px;
+
+  @media ${device.tablet} {
+    min-width: 400px;
+    max-width: 400px;
+  }
+
+  @media ${device.mobileM} {
+    min-width: 320px;
+    max-width: 320px;
+  }
+
+  @media ${device.mobileS} {
+    min-width: 280px;
+    max-width: 280px;
+  }
 `;
 
 export const Input = styled.input`
@@ -69,5 +98,20 @@ export const BackToMain = styled.a`
 
   :hover {
     color: ${({ theme }: { theme: Itheme }) => theme.colors.white};
+  }
+
+  @media ${device.tablet} {
+    margin: 1.3rem;
+    font-size: 2rem;
+  }
+
+  @media ${device.mobileM} {
+    margin: 1rem;
+    font-size: 1.6rem;
+  }
+
+  @media ${device.mobileS} {
+    margin: 1rem;
+    font-size: 1.4rem;
   }
 `;

@@ -7,8 +7,9 @@ export const WebsiteChooseContainer = styled.div`
   padding: 2rem;
   margin-bottom: 2rem;
 
-  @media ${device.mobileM} {
+  @media ${device.tablet} {
     padding: 1.4rem;
+    flex-direction: column;
   }
 
   @media ${device.mobileS} {
@@ -34,6 +35,10 @@ export const ChooseTitle = styled.h1`
 export const ImageContainer = styled.div<{ show: any }>`
   border-bottom: ${(props) =>
     props.show === "active" ? `3px solid #f1eeee` : ""};
+
+  @media ${device.mobileM} {
+    margin: 0.8rem;
+  }
 `;
 
 export const WebsiteToChoose = styled.img<{ show: any }>`

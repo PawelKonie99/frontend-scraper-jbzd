@@ -23,13 +23,17 @@ interface IMeme {
   id: string;
   title: string;
   photoUrl: string;
+  buffer: {
+    data: Buffer;
+  };
+  mimeType: string;
 }
 
 const AllMemes = ({ pageRefresh }: IAllMemes) => {
-  const [allMemes, setAllMemes] = useState<IMeme>({} as IMeme);
-  const [page, setPage] = useState<number>(1);
-  const [scraperName, setScraperName] = useState<string>("jebzdzidy");
-  const [loading, setLoading] = useState<boolean>(true);
+  const [allMemes, setAllMemes] = useState({} as IMeme[]);
+  const [page, setPage] = useState(1);
+  const [scraperName, setScraperName] = useState("jebzdzidy");
+  const [loading, setLoading] = useState(true);
 
   const scraperInStore: string = store.getState().choosenWebsiteReducer.scraper;
 
@@ -78,7 +82,7 @@ const AllMemes = ({ pageRefresh }: IAllMemes) => {
       return;
     }
   };
-
+  console.log(allMemes);
   return (
     <>
       {loading ? (
@@ -114,9 +118,13 @@ const AllMemes = ({ pageRefresh }: IAllMemes) => {
                 <DirectionButton onClick={() => previousPage(history)}>
                   Poprzednia strona
                 </DirectionButton>
-                <DirectionButton onClick={() => nextPage(history)}>
-                  Następna strona
-                </DirectionButton>
+                {allMemes.length >= page * 10 ? (
+                  <DirectionButton onClick={() => nextPage(history)}>
+                    Następna strona
+                  </DirectionButton>
+                ) : (
+                  <DirectionButton>Następna strona</DirectionButton>
+                )}
               </ButtonsContainer>
             )}
           />

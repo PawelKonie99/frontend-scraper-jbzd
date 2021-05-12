@@ -1,5 +1,6 @@
-import { Itheme } from "../../utils/theme";
 import styled from "styled-components";
+import { device } from "../../utils/sizeBreakpoints";
+import { Itheme } from "../../utils/theme";
 
 export const Container = styled.div`
   display: flex;
@@ -8,6 +9,11 @@ export const Container = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   background: ${({ theme }: { theme: Itheme }) => theme.colors.background};
+
+  @media ${device.mobileM} {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const UsernameForm = styled.p`
