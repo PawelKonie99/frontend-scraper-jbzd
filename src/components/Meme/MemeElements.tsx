@@ -22,6 +22,7 @@ export const MemeContainer = styled.div<{ margin: string | undefined }>`
 
 export const TitleContainer = styled.div`
   width: 100%;
+  max-width: 600px;
   margin-bottom: 0.5rem;
   background: ${({ theme }: { theme: Itheme }) =>
     theme.colors.darkerBackground};
