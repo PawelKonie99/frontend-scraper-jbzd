@@ -9,31 +9,27 @@ import LoggedUser from "../components/LoggedUser/LoggedUser";
 
 export type RootState = ReturnType<typeof rootReducer>;
 interface IMainPage {
-  match?: {
-    isExact: boolean;
-    params: {
-      page: string;
+    match?: {
+        isExact: boolean;
+        params: {
+            page: string;
+        };
+        path: string;
+        url: string;
     };
-    path: string;
-    url: string;
-  };
 }
 
 const MainPage = ({ match }: IMainPage) => {
-  const isUserLogged: IUserReducer = useSelector(
-    (state: RootState) => state.userReducer
-  );
-  const username = isUserLogged.user;
-  return (
-    <Layout>
-      {username ? (
-        <LoggedUser username={username.payload.user.username} />
-      ) : (
-        <LoginAndRegister />
-      )}
-      <AllMemes pageRefresh={match ? match?.params.page : 1} />
-    </Layout>
-  );
+    const isUserLogged: IUserReducer = useSelector((state: RootState) => state.userReducer);
+
+    const isUser = isUserLogged.user;
+
+    return (
+        <Layout>
+            {isUser ? <LoggedUser username={isUser.payload.user.username} isAdmin={isUser.payload.user.isAdmin} /> : <LoginAndRegister />}
+            <AllMemes pageRefresh={match ? match?.params.page : 1} />
+        </Layout>
+    );
 };
 
 export default MainPage;

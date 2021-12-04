@@ -2,31 +2,43 @@
 export {};
 
 interface IUserRedcuer {
-  type: string;
-  payload: {
-    username: string;
-    token: string;
-  };
+    type: string;
+    payload: {
+        username: string;
+        token: string;
+    };
 }
 
 export const userReducer = (state = "", action: IUserRedcuer) => {
-  console.log(action);
-  switch (action.type) {
-    case "SET_USER":
-      return {
-        user: action,
-      };
-    default:
-      return state;
-  }
+    // console.log(action);
+    switch (action.type) {
+        case "SET_USER":
+            return {
+                user: action,
+            };
+        case "SET_ADMIN":
+            return {
+                user: action,
+            };
+        default:
+            return state;
+    }
 };
 
 export const setUser = (user: string) => {
-  console.log(user);
-  return {
-    type: "SET_USER",
-    payload: {
-      user,
-    },
-  };
+    return {
+        type: "SET_USER",
+        payload: {
+            user,
+        },
+    };
+};
+
+export const setAdmin = (user: string) => {
+    return {
+        type: "SET_ADMIN",
+        payload: {
+            user,
+        },
+    };
 };

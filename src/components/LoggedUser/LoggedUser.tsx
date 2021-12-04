@@ -1,20 +1,19 @@
-import React from "react";
-import styled from "styled-components";
 import UserAddMeme from "../UserInterface/UserInterface";
-import { Itheme } from "../../utils/theme";
 import { Container, UsernameForm } from "./LoggedUserElements";
+import AdminPanel from "../AdminPanel/AdminPanel";
 
 interface ILoggedUser {
-  username: string;
+    username: string;
+    isAdmin?: boolean;
 }
 
-const LoggedUser = ({ username }: ILoggedUser) => {
-  return (
-    <Container>
-      <UsernameForm>Nazwa użytkownika: {username}</UsernameForm>
-      <UserAddMeme />
-    </Container>
-  );
+const LoggedUser = ({ username, isAdmin }: ILoggedUser) => {
+    return (
+        <Container>
+            <UsernameForm>Nazwa użytkownika: {username}</UsernameForm>
+            <UserAddMeme isAdmin={isAdmin} />
+        </Container>
+    );
 };
 
 export default LoggedUser;
