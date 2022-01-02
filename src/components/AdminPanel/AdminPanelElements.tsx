@@ -38,3 +38,44 @@ export const BackToMain = styled.a`
         font-size: 1.4rem;
     }
 `;
+
+export const UsersContainer = styled.div``;
+
+export const UserContainer = styled.div`
+    display: flex;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid black;
+    width: 100%;
+`;
+
+export const UserName = styled.p`
+    padding-right: 2rem;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+`;
+
+export const UserInfo = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+`;
+
+export const UserInfoContainer = styled.div`
+    display: flex;
+    margin-bottom: 0.3rem;
+    align-items: center;
+`;
+
+export const IdContainer = styled.div`
+    cursor: pointer;
+`;
+
+export const DeleteMemeButton = styled.button`
+    margin-left: 1rem;
+    border: none;
+    background: ${({ theme }: { theme: Itheme }) => theme.colors.offWhite};
+    padding: 0.3rem;
+    border-radius: 0.2rem;
+    outline: inherit;
+`;

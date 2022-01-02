@@ -10,7 +10,6 @@ interface IUserRedcuer {
 }
 
 export const userReducer = (state = "", action: IUserRedcuer) => {
-    // console.log(action);
     switch (action.type) {
         case "SET_USER":
             return {

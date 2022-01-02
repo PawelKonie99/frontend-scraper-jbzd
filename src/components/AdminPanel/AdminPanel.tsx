@@ -4,41 +4,74 @@ import { Link, Route } from "react-router-dom";
 import { IUserReducer } from "../../interfaces/UserInterface";
 import { RootState } from "../../pages/MainPage";
 import getAllUsers from "../../services/getAllUsers";
-import { AdminPanelContainer, BackToMain } from "./AdminPanelElements";
+import {
+    AdminPanelContainer,
+    BackToMain,
+    DeleteMemeButton,
+    IdContainer,
+    UserContainer,
+    UserInfo,
+    UserInfoContainer,
+    UserName,
+    UsersContainer,
+} from "./AdminPanelElements";
+import addMemeService from "../../services/deleteMeme";
 
 const AdminPanel = () => {
     const [allUsers, setAllUsers] = useState<any>();
     const isUserLogged: IUserReducer = useSelector((state: RootState) => state.userReducer);
     const isUser = isUserLogged.user;
 
+    const user = isUserLogged.user;
+
     const loadUsers = async () => {
         const allUsersFromDb = await getAllUsers(isUser.payload.user.username);
         if (allUsersFromDb) {
             setAllUsers(allUsersFromDb);
         }
-        console.log(allUsers?.allUsers);
+    };
+
+    const pickSingleMeme = (history: any, id: string | undefined) => {
+        <Link to={`/${id}`}></Link>;
+        history.push(`/${id}`);
+    };
+
+    const deleteMemeHandler = (id: string, username: string) => {
+        const config = {
+            headers: { Authorization: `bearer ${user.payload.user.token}` },
+        };
+
+        addMemeService.deleteMemeFromDb({ id, username }, config);
     };
 
     return (
         <Route
             render={({ history }) => (
                 <AdminPanelContainer>
-                    <button onClick={loadUsers}>Załaduj uytkowników</button>
+                    <button onClick={loadUsers}>Załaduj uzytkowników</button>
                     <Link style={{ textDecoration: "none", marginBottom: "3rem" }} to={"/page/1"}>
                         <BackToMain>Powrót do strony głównej</BackToMain>
                     </Link>
-                    {allUsers?.allUsers?.map((user: any) => (
-                        <div key={user.username}>
-                            <div>
-                                <p>{user.username}</p>
-                                <div>
-                                    {user?.memes.map((id: any) => (
-                                        <p key={id}>{id}</p>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                    <UsersContainer>
+                        {allUsers && (
+                            <UserInfo>
+                                <p>Nazwa uzytkownika</p>
+                                <p>Memy</p>
+                            </UserInfo>
+                        )}
+
+                        {allUsers?.allUsers?.map((user: any) => (
+                            <UserContainer key={user.username}>
+                                <UserName>{user.username}</UserName>
+                                {user?.memes.map((id: any) => (
+                                    <UserInfoContainer key={id}>
+                                        <IdContainer onClick={() => pickSingleMeme(history, id)}>{id}</IdContainer>
+                                        <DeleteMemeButton onClick={() => deleteMemeHandler(id, user.username)}>Usun mema</DeleteMemeButton>
+                                    </UserInfoContainer>
+                                ))}
+                            </UserContainer>
+                        ))}
+                    </UsersContainer>
                 </AdminPanelContainer>
             )}
         />
