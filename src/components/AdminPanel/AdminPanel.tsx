@@ -14,6 +14,7 @@ import {
     UserInfoContainer,
     UserName,
     UsersContainer,
+    UserTableName,
 } from "./AdminPanelElements";
 import addMemeService from "../../services/deleteMeme";
 
@@ -42,6 +43,7 @@ const AdminPanel = () => {
         };
 
         addMemeService.deleteMemeFromDb({ id, username }, config);
+        window.location.reload();
     };
 
     return (
@@ -55,7 +57,7 @@ const AdminPanel = () => {
                     <UsersContainer>
                         {allUsers && (
                             <UserInfo>
-                                <p>Nazwa uzytkownika</p>
+                                <UserTableName>Nazwa uzytkownika</UserTableName>
                                 <p>Memy</p>
                             </UserInfo>
                         )}

@@ -48,6 +48,10 @@ export const UserContainer = styled.div`
     width: 100%;
 `;
 
+export const UserTableName = styled.p`
+    margin-right: 1rem;
+`;
+
 export const UserName = styled.p`
     padding-right: 2rem;
     margin-bottom: 0.3rem;
